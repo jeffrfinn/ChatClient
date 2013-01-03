@@ -28,20 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ChatBox = new System.Windows.Forms.TextBox();
             this.Send = new System.Windows.Forms.Button();
-            this.ServerName = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ChatBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // ChatBox
-            // 
-            this.ChatBox.AcceptsTab = true;
-            this.ChatBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChatBox.Location = new System.Drawing.Point(0, 0);
-            this.ChatBox.Multiline = true;
-            this.ChatBox.Name = "ChatBox";
-            this.ChatBox.Size = new System.Drawing.Size(284, 221);
-            this.ChatBox.TabIndex = 0;
+
+            // added manualy
+            this.backgroundSend = new System.ComponentModel.BackgroundWorker();
+           
             // 
             // Send
             // 
@@ -51,28 +45,42 @@
             this.Send.TabIndex = 1;
             this.Send.Text = "Send";
             this.Send.UseVisualStyleBackColor = true;
-            this.Send.Click += new System.EventHandler(this.Send_Click);
+            this.Send.Click += new System.EventHandler(this.SendMsgBtn);
+            
+            // manualy added
+            this.backgroundSend.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SendMessage);
+                        
             // 
-            // ServerName
+            // textBox1
             // 
-            this.ServerName.Location = new System.Drawing.Point(13, 230);
-            this.ServerName.Name = "ServerName";
-            this.ServerName.Size = new System.Drawing.Size(128, 20);
-            this.ServerName.TabIndex = 2;
-            this.ServerName.Text = "Enter Server Name";
-            this.ServerName.TextChanged += new System.EventHandler(this.SetServer);
+            this.textBox1.Location = new System.Drawing.Point(0, 187);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(284, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Enter Text Here";
+            // 
+            // ChatBox
+            // 
+            this.ChatBox.AcceptsTab = true;
+            this.ChatBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ChatBox.Location = new System.Drawing.Point(0, 0);
+            this.ChatBox.Multiline = true;
+            this.ChatBox.Name = "ChatBox";
+            this.ChatBox.Size = new System.Drawing.Size(284, 171);
+            this.ChatBox.TabIndex = 0;
+            this.ChatBox.Text = "Connecting to Server";
+
             // 
             // Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.ServerName);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Send);
             this.Controls.Add(this.ChatBox);
             this.Name = "Chat";
             this.Text = "Chat";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox ChatBox;
         private System.Windows.Forms.Button Send;
-        private System.Windows.Forms.TextBox ServerName;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ChatBox;
     }
 }
 
