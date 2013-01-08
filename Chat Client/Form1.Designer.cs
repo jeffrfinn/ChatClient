@@ -47,9 +47,11 @@
             this.Send.UseVisualStyleBackColor = true;
             this.Send.Click += new System.EventHandler(this.SendMsgBtn);
             
-            // manualy added
+            /* manualy added */
+            // when the background worker has completed call SendMessage()
             this.backgroundSend.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SendMessage);
-                        
+            /* GOTO Form1.cs */
+            
             // 
             // textBox1
             // 
